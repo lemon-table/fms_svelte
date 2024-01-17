@@ -1,22 +1,29 @@
 <script>
-  // 스크립트 태그 내에서 필요한 데이터나 메소드를 정의합니다.
+  import { Position } from "../enums/position.enum";
+  // Enum values for the dropdown
+  let positionOptions = Object.values(Position);
 </script>
-
 <div class="page-container">
   <div class="login-form">
     <h3>회원가입</h3>
-    <input type="text" placeholder="아이디" />
-    <input type="text" placeholder="닉네임" />
-    <input type="text" placeholder="나이" />
-    <input type="text" placeholder="키" />
-    <input type="text" placeholder="몸무게" />
-    <select>
-      <option>포지션</option>
-      <!-- 여기에 추가 옵션을 넣을 수 있습니다 -->
+    <input type="text" bind:value={signUpData.name} placeholder="아이디" />
+    <input type="text" bind:value={signUpData.email} placeholder="이메일" />
+    <input type="number" bind:value={signUpData.age} placeholder="나이" />
+    <input type="number" bind:value={signUpData.height} placeholder="키" />
+    <input type="number" bind:value={signUpData.weight} placeholder="몸무게" />
+
+    <select bind:value={signUpData.position}>
+      <option disabled value="">포지션 선택</option>
+      {#each positionOptions as positionOption}
+        <option value={positionOption}>{positionOption}</option>
+      {/each}
     </select>
-    <input type="password" placeholder="비밀번호" />
-    <input type="text" placeholder="비밀번호 확인" />
-    <button>가입완료</button>
+
+    <input type="password" bind:value={signUpData.password} placeholder="비밀번호" />
+    <input type="password" bind:value={signUpData.passwordConfirm} placeholder="비밀번호 확인" />
+    <form action="/signUp" method="post">
+    <button on:click={signUp}>가입완료</button>
+  </form>
   </div>
 </div>
 
