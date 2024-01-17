@@ -1,13 +1,23 @@
 <script>
+  import { onMount } from "svelte";
   import HorizontalAlign from "$lib/components/HorizontalAlign.svelte";
   export let form;
+  console.log(form);
+  if (form === null) {
+    form = {
+      statusCode: 0,
+    };
+  }
+
   function goToSignup() {
     window.location.href = "/signup";
   }
 
-  if (form.statusCode == 200) {
-    goToHome();
-  }
+  onMount(() => {
+    if (form.statusCode == 200) {
+      goToHome();
+    }
+  });
 
   function goToHome() {
     window.location.href = "/home";
@@ -19,8 +29,8 @@
     <!-- 여기에 로그인 폼의 HTML 마크업을 추가합니다. -->
     <img src="src/img/fms_logo.png" alt="로고" width="200" height="200" />
     <form method="post">
-      <input type="text" placeholder="아이디" name="email" />
-      <input type="password" placeholder="비밀번호" name="password" />
+      <input type="text" placeholder="아이디" name="email" required />
+      <input type="password" placeholder="비밀번호" name="password" required />
       <button class="contrast outline" type="submit">로그인</button>
     </form>
     <HorizontalAlign>
