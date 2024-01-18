@@ -1,26 +1,20 @@
 <script>
   import HorizontalAlign from "$lib/components/HorizontalAlign.svelte";
+
   function goToLogin() {
     window.location.href = "/";
+
   }
 </script>
 
 <div class="page-container">
-  <form method="post" class="login-form">
+  <form action ="/signup" method="POST" class="login-form">
     <h3>회원가입</h3>
-    <input type="text" placeholder="아이디" name="email" />
-    <input type="text" placeholder="닉네임" name="nickname" />
-    <HorizontalAlign>
-      <input type="text" placeholder="나이" name="age" />
-      <input type="text" placeholder="키" name="height" />
-      <input type="text" placeholder="몸무게" name="weight" />
-    </HorizontalAlign>
-    <select>
-      <option>포지션</option>
-      <!-- 여기에 추가 옵션을 넣을 수 있습니다 -->
-    </select>
-    <input type="password" placeholder="비밀번호" name="password" />
-    <input type="text" placeholder="비밀번호 확인" name="passwordConfirm" />
+    <input type="text" placeholder="아이디" />
+    <input type="text" placeholder="이메일" />
+
+    <input type="password" placeholder="비밀번호" />
+    <input type="password"  placeholder="비밀번호 확인" />
     <button type="submit">가입완료</button>
   </form>
 </div>
